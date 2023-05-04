@@ -1,10 +1,10 @@
 const data = require('../data/zoo_data');
 
 function getFirstSpecies(id) {
-  const funcionario = data.employees.find((pessoa) => pessoa.id === id);
-  const idAnimal = funcionario.responsibleFor[0];
+  const employee = data.employees.find((employee) => employee.id === id);
+  const idAnimal = employee.responsibleFor[0];
 
-  const animal = data.species.find((especie) => especie.id === idAnimal);
+  const animal = data.species.find((specie) => specie.id === idAnimal);
   return animal;
 }
 

@@ -1,69 +1,69 @@
 const data = require('../data/zoo_data');
 
-function arrayEspecies(local) {
-  const array = [];
+function getLocationSpecies(local) {
+  const locationSpecies = [];
   data.species.forEach((animal) => {
-    if (animal.location === local) array.push(animal.name);
+    if (animal.location === local) locationSpecies.push(animal.name);
   });
-  return array;
+  return locationSpecies;
 }
 
-const objetoEspecies = () => ({
-  NE: arrayEspecies('NE'),
-  NW: arrayEspecies('NW'),
-  SE: arrayEspecies('SE'),
-  SW: arrayEspecies('SW'),
+const getAllLocationSpecies = () => ({
+  NE: getLocationSpecies('NE'),
+  NW: getLocationSpecies('NW'),
+  SE: getLocationSpecies('SE'),
+  SW: getLocationSpecies('SW'),
 });
 
-function ordena(sort, array) {
+function orderArray(sort, array) {
   if (sort === true) array.sort();
   return array;
 }
 
-function listaAnimais(name, sort, sex) {
-  const obj = {};
-  const array = [];
+function getAnimalsList(name, sort, sex) {
+  const allAnimalsListed = {};
+  const animalList = [];
   data.species.find((animal) => animal.name === name)
-    .residents.forEach((pet) => {
-      if (pet.sex === sex) array.push(pet.name);
-      if (sex === undefined) array.push(pet.name);
+    .residents.forEach((zooAnimal) => {
+      if (zooAnimal.sex === sex) animalList.push(zooAnimal.name);
+      if (sex === undefined) animalList.push(zooAnimal.name);
     });
 
-  ordena(sort, array);
-  obj[name] = array;
-  return obj;
+  orderArray(sort, animalList);
+  allAnimalsListed[name] = animalList;
+  return allAnimalsListed;
 }
 
-function incluiNomes(sort, sex) {
-  const objEspecies = objetoEspecies();
+function handleNamesFilter(sort, sex) {
+  const objEspecies = getAllLocationSpecies();
   const arrayChaves = Object.keys(objEspecies);
   arrayChaves.forEach((local) => {
-    objEspecies[local] = objEspecies[local].map((name) => listaAnimais(name, sort, sex));
+    objEspecies[local] = objEspecies[local].map((name) => getAnimalsList(name, sort, sex));
   });
 
   return objEspecies;
 }
 
-function filters2(options) {
+function handleParametersFilter(options) {
   const { sex, sorted } = options;
-  if (sorted === true && sex !== undefined) return incluiNomes(true, sex);
-  if (sex !== undefined) return incluiNomes(sorted, sex);
-  if (sorted === true) return incluiNomes(sorted, sex);
-  return incluiNomes();
+  if (sorted === true && sex !== undefined) return handleNamesFilter(true, sex);
+  if (sex !== undefined) return handleNamesFilter(sorted, sex);
+  if (sorted === true) return handleNamesFilter(sorted, sex);
+  return handleNamesFilter();
 }
 
-function filters(options) {
+function handleFilters(options) {
   const { includeNames } = options;
-  if (includeNames === true) return filters2(options);
-  return objetoEspecies();
+  if (includeNames === true) return handleParametersFilter(options);
+  return getAllLocationSpecies();
 }
 
 function getAnimalMap(options) {
-  const listaEspecies = objetoEspecies();
+  const speciesList = getAllLocationSpecies();
 
-  if (options !== undefined) return filters(options);
+  if (options !== undefined) return handleFilters(options);
 
-  return listaEspecies;
+  return speciesList;
 }
 
 module.exports = getAnimalMap;

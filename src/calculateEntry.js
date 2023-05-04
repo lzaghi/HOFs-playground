@@ -1,33 +1,33 @@
 const data = require('../data/zoo_data');
 
 function countEntrants(entrants) {
-  const obj = {
+  const entrantsList = {
     child: 0,
     adult: 0,
     senior: 0,
   };
   entrants.forEach((pessoa) => {
     if (pessoa.age < 18) {
-      obj.child += 1;
+      entrantsList.child += 1;
     } else if (pessoa.age >= 18 && pessoa.age < 50) {
-      obj.adult += 1;
+      entrantsList.adult += 1;
     } else if (pessoa.age >= 50) {
-      obj.senior += 1;
+      entrantsList.senior += 1;
     }
   });
-  return obj;
+  return entrantsList;
 }
 
 function calculateEntry(entrants) {
   if (entrants === undefined) return 0;
   if (Object.keys(entrants).length === 0) return 0;
 
-  const obj = countEntrants(entrants);
-  const { child, adult, senior } = obj;
+  const entrantsList = countEntrants(entrants);
+  const { child, adult, senior } = entrantsList;
 
-  let soma = 0;
-  soma += child * 20.99 + adult * 49.99 + senior * 24.99;
-  return soma;
+  let revenue = 0;
+  revenue += child * 20.99 + adult * 49.99 + senior * 24.99;
+  return revenue;
 }
 
 module.exports = { calculateEntry, countEntrants };

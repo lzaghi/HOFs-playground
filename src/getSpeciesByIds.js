@@ -1,13 +1,13 @@
 const data = require('../data/zoo_data');
 
 function getSpeciesByIds(...ids) {
-  const array = [];
+  const speciesList = [];
   ids.forEach((id) =>
-    data.species.forEach((objeto) => {
-      if (objeto.id === id) array.push(objeto);
+    data.species.forEach((specie) => {
+      if (specie.id === id) speciesList.push(specie);
     }));
 
-  return array;
+  return speciesList;
 }
 
 module.exports = getSpeciesByIds;
