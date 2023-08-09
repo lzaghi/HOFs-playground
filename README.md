@@ -7,7 +7,7 @@ O foco desse projeto foi explorar a manipulação de arrays e objetos através d
 
 ## Funcionalidades
 
-A partir dos ![dados disponíveis](data/zoo_data.js), é possivel:
+A partir dos [dados disponíveis](data/zoo_data.js), é possivel:
 
 - Recuperar um array com todos os animais da espécie do ID consultado
 - Se todos os animais de determinada espécie são mais velhos do que a idade consultada
@@ -49,3 +49,7 @@ Experimente o sistema! Para isso, siga os passos abaixo:
   npm test
 ```
 
+## Qualidade de código
+
+Análise SonarCloud
+![](sonarcloud.png)
