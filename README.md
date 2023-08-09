@@ -10,11 +10,11 @@ O foco desse projeto foi explorar a manipulação de arrays e objetos através d
 A partir dos [dados disponíveis](data/zoo_data.js), é possivel:
 
 - Recuperar um array com todos os animais da espécie do ID consultado
-- Se todos os animais de determinada espécie são mais velhos do que a idade consultada
-- Recuperar colaboradores pelo primeiro ou último nome, e suas informações
-- Recuperar quais as espécies de responsabilidade do colaborador consultado
-- Verificar se um colaborador é gerente e quais pessoas ele supervisiona
 - Contabilizar a quantidade de espécies no zoológico
+- Checar se todos os animais de determinada espécie são mais velhos do que a idade consultada
+- Recuperar colaboradores pelo primeiro ou último nome, e seus dados associados
+- Recuperar quais são as espécies de responsabilidade do colaborador consultado
+- Verificar se um colaborador é gerente e quais pessoas ele supervisiona
 - Recuperar o animal mais velho que seja gerenciado pelo colaborador consultado
 - Calcular a receita total obtida da venda de ingressos, que varia com a idade dos visitantes
 - Recuperar horários de funcionamento e se o zoológico está aberto no momento consultado
